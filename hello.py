@@ -48,7 +48,7 @@ while True:
             check_count +=1
     while hero == '' or hero == None : 
         hero = pyautogui.locateCenterOnScreen('hero.png',grayscale=False)
-        if hunt != None :
+        if hero != None :
             #print(hero)
             pyautogui.moveTo(hero)
             pyautogui.click()
