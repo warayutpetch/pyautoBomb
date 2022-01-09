@@ -213,4 +213,10 @@ def enter_map():
 def remap():
     back_button()
     enter_map()
-                
+
+def resize():
+    browser = None
+    browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+    print(browser)
+    if browser != None and browser != [] :
+        browser[0].resizeTo(1100,1000)
