@@ -209,4 +209,8 @@ def enter_map():
             break
         else : 
             check_count +=1 
+
+def remap():
+    back_button()
+    enter_map()
                 

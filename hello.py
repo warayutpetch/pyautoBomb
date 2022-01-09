@@ -19,6 +19,8 @@ while True:
     #ทำงาน
     for x in range(60) : 
         show_time += work_time
+        if show_time % 180 > 0 :
+            remap()
         time.sleep(work_time)
         print(show_time)
     show_time = 0
