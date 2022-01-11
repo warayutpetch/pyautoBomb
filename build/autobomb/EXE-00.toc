@@ -52,7 +52,7 @@
  [],
  False,
  False,
- 1641752179,
+ 1641885359,
  [('run.exe',
    'c:\\users\\wara\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])
