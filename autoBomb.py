@@ -72,7 +72,8 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
             if (show_time % 180) == 1 and show_time > 180 :
                 remap()
             Output.delete("1.0", END)
-            Output.insert(END, show_time)
+            Output.insert(END, "WORK : ")
+            Output.insert(END,show_time)
             root.update()
             time.sleep(1)
             
@@ -86,6 +87,10 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
         # #หยุดพัก
         for y in range(wait_time*60) : 
             show_time += 1
+            Output.delete("1.0", END)
+            Output.insert(END, "REST : ")
+            Output.insert(END,show_time)
+            root.update()
             time.sleep(1)
             print(show_time)
 

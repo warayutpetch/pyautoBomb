@@ -212,6 +212,7 @@ def enter_map():
 
 def remap():
     back_button()
+    pyautogui.sleep(1.5)
     enter_map()
 
 def resize():
