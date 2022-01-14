@@ -1,12 +1,12 @@
 import pyautogui
 import time
 
-def check_login():
+def check_login(screen):
     start = None
     interval_check = 3
     check_count = 0
     while start == '' or start == None : 
-        start = pyautogui.locateCenterOnScreen('wallet.png',grayscale=False,confidence=.9)
+        start = pyautogui.locateCenterOnScreen('img/wallet.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
         print(start)
         if start != None :
             pyautogui.moveTo(start)
@@ -21,12 +21,12 @@ def check_login():
             return False
         else : 
             check_count +=1
-def check_mtm():
+def check_mtm(screen):
     mtm = None
     interval_check = 3
     check_count = 0
     while mtm == '' or mtm == None : 
-        mtm = pyautogui.locateCenterOnScreen('approve_mtm.png',grayscale=False,confidence=.9)
+        mtm = pyautogui.locateCenterOnScreen('img/approve_mtm.png',grayscale=False,confidence=.8)
         if mtm != None :
             print(mtm)
             pyautogui.moveTo(mtm)
@@ -40,12 +40,12 @@ def check_mtm():
             return False
         else : 
             check_count +=1
-def open_hero():
+def open_hero(screen):
     hero = None
     interval_check = 10
     check_count = 0
     while hero == '' or hero == None : 
-        hero = pyautogui.locateCenterOnScreen('hero.png',grayscale=False,confidence=.9)
+        hero = pyautogui.locateCenterOnScreen('img/hero.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9)
         if hero != None :
             print(hero)
             pyautogui.moveTo(hero)
@@ -58,61 +58,61 @@ def open_hero():
         else : 
             check_count +=1 
         pyautogui.sleep(1)
-def set_hero_work(max_class_work,action):
+def set_hero_work(max_class_work,action,screen):
     for i in range(11) :
         print(i)
         if max_class_work >= 1 :
-            for box in pyautogui.locateAllOnScreen('common.png',grayscale=False,confidence=.95):
+            for box in pyautogui.locateAllOnScreen('img/common.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8):
                 print(pyautogui.center(box))
                 pyautogui.moveTo(pyautogui.center(box))
                 if action == 1 :
-                    pyautogui.moveRel(220,-20) #work
+                    pyautogui.moveRel(110,-10) #work
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
                 pyautogui.sleep(2)
         
         if max_class_work >= 2 :
-            for box in pyautogui.locateAllOnScreen('rare.png',grayscale=False,confidence=.95):
+            for box in pyautogui.locateAllOnScreen('img/rare.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
                 print(pyautogui.center(box))
                 pyautogui.moveTo(pyautogui.center(box))
                 if action == 1 :
-                    pyautogui.moveRel(230,-20) #work
+                    pyautogui.moveRel(110,-10) #work
                 else :
                     pyautogui.moveRel(300,-20) #rest
                 pyautogui.click()
                 pyautogui.sleep(2)
         if max_class_work >= 3 :
-            for box in pyautogui.locateAllOnScreen('super_rare.png',grayscale=False,confidence=.95):
+            for box in pyautogui.locateAllOnScreen('img/super_rare.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
                 print(pyautogui.center(box))
                 pyautogui.moveTo(pyautogui.center(box))
                 if action == 1 :
-                    pyautogui.moveRel(220,-20) #work
+                    pyautogui.moveRel(110,-10) #work
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
                 pyautogui.sleep(2)
         if max_class_work >= 4 :    
-            for box in pyautogui.locateAllOnScreen('epic.png',grayscale=False,confidence=.95):
+            for box in pyautogui.locateAllOnScreen('img/epic.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
                 print(pyautogui.center(box))
                 pyautogui.moveTo(pyautogui.center(box))
                 if action == 1 :
-                    pyautogui.moveRel(220,-20) #work
+                    pyautogui.moveRel(110,-10) #work
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
                 pyautogui.sleep(2)
         for scroll in range (4):
-            pyautogui.scroll(-50)
+            pyautogui.scroll(-25)
         pyautogui.sleep(0.5)
 
-def set_hero_rest():
+def set_hero_rest(screen):
     go_rest = ''
     interval_check = 5
     check_count= 0
     while go_rest == '' or go_rest == None : 
         print('go_rest=',go_rest)
-        go_rest = pyautogui.locateCenterOnScreen('rest.png',grayscale=False,confidence=.9)
+        go_rest = pyautogui.locateCenterOnScreen('img/rest.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
         if go_rest != None :
             print(go_rest)
             pyautogui.moveTo(go_rest)
@@ -125,12 +125,12 @@ def set_hero_rest():
         else : 
             check_count +=1
 
-def check_disconnect():
+def check_disconnect(screen):
     discon = None
     interval_check = 5
     check_count = 0
     while discon == '' or discon == None : 
-        discon = pyautogui.locateCenterOnScreen('disconnect.png',grayscale=False,confidence=.95)
+        discon = pyautogui.locateCenterOnScreen('img/disconnect.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
         print(discon)
         if discon != None :
             pyautogui.moveTo(discon)
@@ -144,12 +144,12 @@ def check_disconnect():
         else : 
             check_count +=1
 
-def back_button():
+def back_button(screen):
     btn_back = ''
     interval_check = 5
     check_count = 0
     while btn_back == '' or btn_back == None : 
-        btn_back = pyautogui.locateCenterOnScreen('btn_back.png',grayscale=False,confidence=.8)
+        btn_back = pyautogui.locateCenterOnScreen('img/btn_back.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
         if btn_back != None :
             print(btn_back)
             pyautogui.moveTo(btn_back)
@@ -161,18 +161,18 @@ def back_button():
             break
         else : 
             check_count +=1
-def wait_loading():
+def wait_loading(screen):
     interval_check = 3
     wait_work = None
     check_count = 0
     go_work = None
     while wait_work == '' or wait_work == None : 
-        wait_work = pyautogui.locateCenterOnScreen('close_hero.png',grayscale=False,confidence=.9)
+        wait_work = pyautogui.locateCenterOnScreen('img/close_hero.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
         print('wait_work=',wait_work)
         if wait_work != None :
             while go_work == '' or go_work == None : 
                 print('go_work=',go_work)
-                go_work = pyautogui.locateCenterOnScreen('btn_work.png',grayscale=False,confidence=.9)
+                go_work = pyautogui.locateCenterOnScreen('img/btn_work.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
                 if go_work != None :
                     print(wait_work)
                     pyautogui.moveTo(wait_work)
@@ -192,12 +192,12 @@ def wait_loading():
         else : 
             check_count +=1
 
-def enter_map():
+def enter_map(screen):
     interval_check = 5
     hunt = None
     check_count = 0
     while hunt == '' or hunt == None : 
-        hunt = pyautogui.locateCenterOnScreen('hunt.png',grayscale=False,confidence=.9)
+        hunt = pyautogui.locateCenterOnScreen('img/hunt.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9)
         if hunt != None :
             print(hunt)
             pyautogui.moveTo(hunt)
@@ -210,12 +210,12 @@ def enter_map():
         else : 
             check_count +=1 
 
-def remap():
-    back_button()
+def remap(screen):
+    back_button(screen)
     pyautogui.sleep(1.5)
-    enter_map()
+    enter_map(screen)
 
-def resize():
+def resize(screen):
     browser = None
     browser = pyautogui.getWindowsWithTitle('Bombcrypto')
     print(browser)

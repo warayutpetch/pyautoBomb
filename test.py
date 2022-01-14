@@ -87,12 +87,37 @@ import time
 #     pyautogui.sleep(0.5)
 
 # print("end")
+# import win32gui
+# import win32api
+# import win32con
+
+
+# def control_click(x, y, handle, button='left'):
+
+#     l_param = win32api.MAKELONG(x, y)
+
+#     if button == 'left':
+#         win32gui.PostMessage(handle, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, l_param)
+#         win32gui.PostMessage(handle, win32con.WM_LBUTTONUP, 0, l_param)
+#         print('okkkk')
+#     elif button == 'right':
+#         win32gui.PostMessage(handle, win32con.WM_RBUTTONDOWN, 0, l_param)
+#         win32gui.PostMessage(handle, win32con.WM_RBUTTONUP, 0, l_param)
+
+# interval_check = 5
+# check_count = 5
+# common = None
 # while common == '' or common == None : 
-#     common = pyautogui.locateCenterOnScreen('disconnect.png',grayscale=False,confidence=.95)
-#     print(common)
+
+#     common = pyautogui.locateCenterOnScreen('hunt.png',grayscale=False,confidence=.95)
+#     hWnd = win32gui.FindWindow(None, "Bombcrypto - Google Chrome",)
+#     # print(hWnd)
+
 #     if common != None :
-#         pyautogui.moveTo(common)
-#         pyautogui.click()
+#         # print(common.y)
+#         # pyautogui.moveTo(common)
+#         control_click(common.x,common.y,hWnd,"left")
+#         # pyautogui.click(common)
 #         check_count = 0
 #     if check_count >= interval_check :
 #         check_count = 0
@@ -101,5 +126,40 @@ import time
 #     else : 
 #         check_count +=1
 
-common = pyautogui.getWindowsWithTitle('Bombcrypto')
-print(common[0])
+# common = pyautogui.getWindowsWithTitle('Bombcrypto')
+# print(common[0])
+def back_button(screen):
+    btn_back = ''
+    interval_check = 5
+    check_count = 0
+    while btn_back == '' or btn_back == None : 
+        btn_back = pyautogui.locateCenterOnScreen('img/btn_back.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8)
+        if btn_back != None :
+            print(btn_back)
+            pyautogui.moveTo(btn_back)
+            time.sleep(1)
+            pyautogui.click()
+            check_count = 0
+        if check_count == interval_check :
+            check_count = 0
+            break
+        else : 
+            check_count +=1
+browser = None
+browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+print(browser)
+screen_countX = 1
+screen_countY = 1
+cout_screen = 1
+for list in browser :
+    if list != None and list != [] :
+        print(list)
+        list.moveTo(screen_countX,screen_countY)
+        screen_countX += 540
+        cout_screen +=1
+        if cout_screen > 3 :
+            screen_countY += 500
+            screen_countX = 1
+
+        # screen_countY += 500
+        # back_button(list)

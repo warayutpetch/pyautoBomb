@@ -1,3 +1,4 @@
+from asyncio import sleep
 import pyautogui
 import time
 from check_function import *
@@ -51,26 +52,49 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
 
     while True:
 
-
-        root.update()
-        show_time = 0 
-        work_time = input_work_time
-        wait_time = input_rest_time
-        max_class = input_max_class
-        resize()
-        check_disconnect()
-        check_login()
-        check_mtm()
-        open_hero()
-        set_hero_work(max_class,1)
-        wait_loading()
-        enter_map()
-        #ทำงาน
+        browser = None
+        browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+    
+        screen_countX = 1
+        screen_countY = 1
+        count_screen = 1
+        for list in browser :
+            if browser != None and browser != [] :
+                list.resizeTo(540,500)
+                print(list)
+                list.moveTo(screen_countX,screen_countY)
+                screen_countX += 540
+                count_screen +=1
+                if count_screen > 3 :
+                    screen_countY += 500
+                    screen_countX = 1
+        for list in browser :
+            root.update()
+            show_time = 0 
+            work_time = input_work_time
+            wait_time = input_rest_time
+            max_class = input_max_class
+            # resize()
+            check_disconnect(list)
+            check_login(list)
+            check_mtm(list)
+            open_hero(list)
+            set_hero_work(max_class,1,list)
+            wait_loading(list)
+            enter_map(list)
+            #ทำงาน
+        
         for x in range(work_time*60) : 
             show_time += 1
-      
+    
             if (show_time % 180) == 1 and show_time > 180 :
-                remap()
+                browser = None
+                browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+                for list in browser : 
+                    pyautogui.sleep(1)
+                    remap(list)
+                    pyautogui.sleep(1)
+
             Output.delete("1.0", END)
             Output.insert(END, "WORK : ")
             Output.insert(END,show_time)
@@ -79,14 +103,30 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
             
             print(show_time)
         show_time = 0
-        back_button()
-        open_hero()
-        set_hero_rest()
-        wait_loading()
-        back_button()
+        browser = None
+        browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+        for list in browser :
+   
+            pyautogui.sleep(1)
+            back_button(list)
+            open_hero(list)
+            set_hero_rest(list)
+            wait_loading(list)
+            back_button(list)
+
         # #หยุดพัก
         for y in range(wait_time*60) : 
             show_time += 1
+            if (show_time % 180) == 1 and show_time > 180 :
+                browser = None
+                browser = pyautogui.getWindowsWithTitle('Bombcrypto')
+                for list in browser : 
+                    pyautogui.sleep(1)
+                    remap()
+                    pyautogui.sleep(0.5)
+                    back_button()
+                    pyautogui.sleep(1)
+
             Output.delete("1.0", END)
             Output.insert(END, "REST : ")
             Output.insert(END,show_time)
