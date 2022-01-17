@@ -78,6 +78,7 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
             check_disconnect(list)
             check_login(list)
             check_mtm(list)
+            back_button(list)
             open_hero(list)
             set_hero_work(max_class,1,list)
             wait_loading(list)
@@ -122,9 +123,9 @@ def run_bot(input_work_time,input_rest_time,input_max_class) :
                 browser = pyautogui.getWindowsWithTitle('Bombcrypto')
                 for list in browser : 
                     pyautogui.sleep(1)
-                    remap()
+                    remap(list)
                     pyautogui.sleep(0.5)
-                    back_button()
+                    back_button(list)
                     pyautogui.sleep(1)
 
             Output.delete("1.0", END)

@@ -62,7 +62,7 @@ def set_hero_work(max_class_work,action,screen):
     for i in range(11) :
         print(i)
         if max_class_work >= 1 :
-            for box in pyautogui.locateAllOnScreen('img/common.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.8):
+            for box in pyautogui.locateAllOnScreen('img/common.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.95):
                 print(pyautogui.center(box))
                 pyautogui.moveTo(pyautogui.center(box))
                 if action == 1 :
@@ -70,7 +70,7 @@ def set_hero_work(max_class_work,action,screen):
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
-                pyautogui.sleep(2)
+                pyautogui.sleep(1)
         
         if max_class_work >= 2 :
             for box in pyautogui.locateAllOnScreen('img/rare.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
@@ -81,7 +81,7 @@ def set_hero_work(max_class_work,action,screen):
                 else :
                     pyautogui.moveRel(300,-20) #rest
                 pyautogui.click()
-                pyautogui.sleep(2)
+                pyautogui.sleep(1)
         if max_class_work >= 3 :
             for box in pyautogui.locateAllOnScreen('img/super_rare.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
                 print(pyautogui.center(box))
@@ -91,7 +91,7 @@ def set_hero_work(max_class_work,action,screen):
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
-                pyautogui.sleep(2)
+                pyautogui.sleep(1)
         if max_class_work >= 4 :    
             for box in pyautogui.locateAllOnScreen('img/epic.png',region=(screen.left,screen.top,screen.width,screen.height),grayscale=False,confidence=.9):
                 print(pyautogui.center(box))
@@ -101,7 +101,7 @@ def set_hero_work(max_class_work,action,screen):
                 else :
                     pyautogui.moveRel(290,-20) #rest
                 pyautogui.click()
-                pyautogui.sleep(2)
+                pyautogui.sleep(1)
         for scroll in range (4):
             pyautogui.scroll(-25)
         pyautogui.sleep(0.5)
